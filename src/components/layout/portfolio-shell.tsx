@@ -2,7 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { socialLinks } from "@/data/portfolio";
+import { personalInformation, socialLinks } from "@/data/portfolio";
 
 type PortfolioShellProps = {
   children: ReactNode;
@@ -18,13 +18,15 @@ export function PortfolioShell({ children }: PortfolioShellProps) {
       <aside className="identity-area" aria-label="Portfolio identity">
         <div className="identity-area__inner">
           <header>
-            <a className="identity" href="#top" aria-label="Shantanu Sutar, home">
-              <h1>Shantanu Sutar</h1>
-              <p>Software Developer</p>
+            <a
+              className="identity"
+              href="#top"
+              aria-label={`${personalInformation.name}, home`}
+            >
+              <h1>{personalInformation.name}</h1>
+              <p>{personalInformation.role}</p>
             </a>
-            <p className="identity-statement">
-              I build reliable, performant applications across the stack.
-            </p>
+            <p className="identity-statement">{personalInformation.intro}</p>
           </header>
 
           <SiteNavigation />

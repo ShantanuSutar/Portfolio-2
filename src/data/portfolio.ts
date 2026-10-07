@@ -1,9 +1,18 @@
 import type {
-  ExperiencePlaceholder,
+  Experience,
   NavigationItem,
-  ProjectPlaceholder,
+  PersonalInformation,
+  Project,
   SocialLink,
 } from "@/types/content";
+
+export const personalInformation: PersonalInformation = {
+  name: "Shantanu Sutar",
+  role: "Software Developer",
+  intro: "I build reliable, performant applications across the stack.",
+  about:
+    "I'm a software developer at Capgemini working across React, Java, and Spring Boot. I enjoy building full-stack products, improving frontend performance, and solving the engineering problems between an interface and the systems behind it.",
+};
 
 export const navigationItems: readonly NavigationItem[] = [
   { label: "About", href: "#about" },
@@ -12,35 +21,42 @@ export const navigationItems: readonly NavigationItem[] = [
 ];
 
 export const socialLinks: readonly SocialLink[] = [
-  { label: "GitHub", href: "https://github.com/" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/" },
-  { label: "LeetCode", href: "https://leetcode.com/" },
+  // TODO: Replace these platform roots once Shantanu's verified profile URLs are available.
+  { label: "GitHub", href: "https://github.com/", isPlaceholder: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/", isPlaceholder: true },
+  { label: "LeetCode", href: "https://leetcode.com/", isPlaceholder: true },
 ];
 
-export const experiencePlaceholders: readonly ExperiencePlaceholder[] = [
+export const experiences: readonly Experience[] = [
   {
-    period: "20XX — Present",
-    role: "Role Title",
-    company: "Company Name",
-    summary: "A brief overview of the role, responsibilities, and impact will live here.",
+    company: "Capgemini",
+    role: "Software Developer",
+    period: "Sept 2025 — Present",
+    description:
+      "I work on customer-facing applications across the stack, building interfaces in React and backend services with Java and Spring Boot.",
+    technologies: ["React", "Java", "Spring Boot", "SQL"],
   },
   {
-    period: "20XX — 20XX",
-    role: "Previous Role",
-    company: "Company Name",
-    summary: "A concise note about the work and its context will live here.",
+    company: "Whatbytes",
+    role: "Frontend Developer Intern",
+    period: "Dec 2024 — Jun 2025",
+    description:
+      "I worked on customer-facing hotel booking and admin platforms across the frontend and backend.",
+    technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
   },
 ];
 
-export const projectPlaceholders: readonly ProjectPlaceholder[] = [
+export const projects: readonly Project[] = [
   {
-    name: "Selected Project",
-    meta: "Application · 20XX",
-    summary: "A short description of the problem, approach, and outcome will live here.",
+    title: "DineHub",
+    description:
+      "A full-stack food ordering platform for customers and restaurant owners, with authentication, payments, menu management, and order workflows.",
+    technologies: ["React", "Spring Boot", "PostgreSQL", "Stripe"],
   },
   {
-    name: "Selected Project",
-    meta: "Platform · 20XX",
-    summary: "A concise project overview and relevant technical context will live here.",
+    title: "Unsaid — Stories and More",
+    description:
+      "A full-stack publishing platform with rich-text editing, authentication, social interactions, and scheduled publishing.",
+    technologies: ["React", "Node.js", "Express", "PostgreSQL"],
   },
 ];

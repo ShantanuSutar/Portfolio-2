@@ -281,8 +281,33 @@ ol {
   line-height: 1.7;
 }
 
+.technology-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.55rem;
+  margin-top: 1rem;
+  color: #a49b91;
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.58rem;
+  letter-spacing: 0.045em;
+}
+
+.technology-list li:not(:last-child)::after {
+  margin-left: 0.55rem;
+  color: #555c5b;
+  content: "/";
+}
+
 .project-list .entry__meta {
   color: #a49b91;
+}
+
+.project-list .entry__content h3 a {
+  transition: color 180ms ease;
+}
+
+.project-list .entry__content h3 a:hover {
+  color: var(--accent);
 }
 
 .site-footer {
