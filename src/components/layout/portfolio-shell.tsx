@@ -1,8 +1,8 @@
-import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { SiteNavigation } from "@/components/navigation/site-navigation";
-import { personalInformation, socialLinks } from "@/data/portfolio";
+import { SocialLinks } from "@/components/navigation/social-links";
+import { personalInformation } from "@/data/portfolio";
 
 type PortfolioShellProps = {
   children: ReactNode;
@@ -24,25 +24,17 @@ export function PortfolioShell({ children }: PortfolioShellProps) {
               aria-label={`${personalInformation.name}, home`}
             >
               <h1>{personalInformation.name}</h1>
-              <p>{personalInformation.role}</p>
             </a>
+            <p className="identity-meta">
+              <span>{personalInformation.role}</span>
+              <span aria-hidden="true">·</span>
+              <span>{personalInformation.location}</span>
+            </p>
             <p className="identity-statement">{personalInformation.intro}</p>
           </header>
 
           <SiteNavigation />
-
-          <nav aria-label="Social profiles">
-            <ul className="social-links">
-              {socialLinks.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} target="_blank" rel="noreferrer">
-                    {link.label}
-                    <ArrowUpRight aria-hidden="true" size={13} strokeWidth={1.7} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <SocialLinks variant="desktop" />
         </div>
       </aside>
 

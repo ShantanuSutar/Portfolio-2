@@ -9,6 +9,7 @@ import type {
 export const personalInformation: PersonalInformation = {
   name: "Shantanu Sutar",
   role: "Software Developer",
+  location: "Pune, India",
   intro: "I build reliable, performant applications across the stack.",
   about:
     "I'm a software developer at Capgemini working across React, Java, and Spring Boot. I enjoy building full-stack products, improving frontend performance, and solving the engineering problems between an interface and the systems behind it.",

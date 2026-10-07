@@ -3,6 +3,7 @@ export type SectionId = "about" | "experience" | "projects";
 export type PersonalInformation = {
   readonly name: string;
   readonly role: string;
+  readonly location: string;
   readonly intro: string;
   readonly about: string;
 };
