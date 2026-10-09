@@ -12,7 +12,7 @@ export const personalInformation: PersonalInformation = {
   location: "Pune, India",
   intro: "I build reliable, performant applications across the stack.",
   about:
-    "I'm a software developer at Capgemini working across React, Java, and Spring Boot. I enjoy building full-stack products, improving frontend performance, and solving the engineering problems between an interface and the systems behind it.",
+    "I'm a software developer at Capgemini, working with React, Java, and Spring Boot to build customer-facing applications. I enjoy working across the stack, from creating intuitive interfaces to developing the backend systems that power them.",
 };
 
 export const navigationItems: readonly NavigationItem[] = [
@@ -34,7 +34,7 @@ export const experiences: readonly Experience[] = [
     role: "Software Developer",
     period: "Sept 2025 — Present",
     description:
-      "I work on customer-facing applications across the stack, building interfaces in React and backend services with Java and Spring Boot.",
+      "Building customer-facing applications across React and Java/Spring Boot, with a focus on reusable interfaces, backend services, and frontend performance.",
     technologies: ["React", "Java", "Spring Boot", "SQL"],
   },
   {
@@ -42,7 +42,7 @@ export const experiences: readonly Experience[] = [
     role: "Frontend Developer Intern",
     period: "Dec 2024 — Jun 2025",
     description:
-      "I worked on customer-facing hotel booking and admin platforms across the frontend and backend.",
+      "Worked across hotel booking and admin products, building frontend experiences and supporting backend functionality.",
     technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
   },
 ];
@@ -51,7 +51,7 @@ export const projects: readonly Project[] = [
   {
     title: "DineHub",
     description:
-      "A full-stack food ordering platform for customers and restaurant owners, with authentication, payments, menu management, and order workflows.",
+      "A full-stack food ordering platform for customers and restaurant owners, covering discovery, menus, authentication, payments, and order management.",
     technologies: ["React", "Spring Boot", "PostgreSQL", "Stripe"],
   },
   {

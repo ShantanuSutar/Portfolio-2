@@ -109,19 +109,23 @@ ol {
   padding-block: clamp(4rem, 10vh, 7rem);
 }
 
+.identity-area__inner > header {
+  max-width: 26rem;
+}
+
 .identity h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 3.7vw, 3.75rem);
-  font-weight: 520;
-  letter-spacing: -0.055em;
-  line-height: 1;
+  font-size: clamp(2.6rem, 3.5vw, 3.65rem);
+  font-weight: 540;
+  letter-spacing: -0.05em;
+  line-height: 0.98;
 }
 
 .identity-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
-  margin: 0.85rem 0 0;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
   color: var(--muted);
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.64rem;
@@ -133,11 +137,11 @@ ol {
 }
 
 .identity-statement {
-  max-width: 24rem;
-  margin: 2.25rem 0 0;
-  color: #b9c0bd;
-  font-size: clamp(1rem, 1.3vw, 1.15rem);
-  line-height: 1.7;
+  max-width: 22rem;
+  margin: 2.4rem 0 0;
+  color: #c2c8c5;
+  font-size: clamp(1.02rem, 1.25vw, 1.14rem);
+  line-height: 1.65;
 }
 
 .primary-nav {
@@ -278,11 +282,11 @@ ol {
 }
 
 .about-copy {
-  max-width: 38rem;
+  max-width: 35rem;
   margin: 0;
   color: #c1c7c4;
-  font-size: clamp(1.05rem, 1.45vw, 1.25rem);
-  line-height: 1.8;
+  font-size: clamp(1.02rem, 1.3vw, 1.16rem);
+  line-height: 1.78;
 }
 
 .entry-list {
@@ -354,16 +358,34 @@ ol {
   content: "/";
 }
 
-.project-list .entry__meta {
-  color: #a49b91;
+.project-list .entry__content {
+  grid-column: 1 / -1;
+  max-width: 34rem;
+}
+
+.project-list .entry__content h3 {
+  font-size: 1.05rem;
 }
 
 .project-list .entry__content h3 a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   transition: color 180ms ease;
 }
 
 .project-list .entry__content h3 a:hover {
   color: var(--accent);
+}
+
+.project-list .entry__content h3 svg {
+  color: var(--muted);
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.project-list .entry__content h3 a:hover svg {
+  color: var(--accent);
+  transform: translate(1px, -1px);
 }
 
 .site-footer {
@@ -399,11 +421,11 @@ ol {
   }
 
   .identity h1 {
-    font-size: clamp(2.75rem, 10vw, 4rem);
+    font-size: clamp(2.65rem, 9vw, 3.4rem);
   }
 
   .identity-statement {
-    max-width: 30rem;
+    max-width: 22rem;
   }
 
   .primary-nav {

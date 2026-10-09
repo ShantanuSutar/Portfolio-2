@@ -1,3 +1,5 @@
+import { ArrowUpRight } from "lucide-react";
+
 import { projects } from "@/data/portfolio";
 
 export function ProjectsSection() {
@@ -6,13 +8,13 @@ export function ProjectsSection() {
       <h2 id="projects-title">Projects</h2>
       <ol className="entry-list project-list">
         {projects.map((project) => (
-          <li className="entry" key={project.title}>
-            <p className="entry__meta">Featured project</p>
+          <li className="entry project-entry" key={project.title}>
             <div className="entry__content">
               <h3>
                 {project.href ? (
                   <a href={project.href} target="_blank" rel="noreferrer">
                     {project.title}
+                    <ArrowUpRight aria-hidden="true" size={14} strokeWidth={1.7} />
                   </a>
                 ) : (
                   project.title
