@@ -1,5 +1,6 @@
 import type {
   Experience,
+  ExternalLink,
   NavigationItem,
   PersonalInformation,
   Project,
@@ -22,11 +23,15 @@ export const navigationItems: readonly NavigationItem[] = [
 ];
 
 export const socialLinks: readonly SocialLink[] = [
-  // TODO: Replace these platform roots once Shantanu's verified profile URLs are available.
-  { label: "GitHub", href: "https://github.com/", isPlaceholder: true },
-  { label: "LinkedIn", href: "https://www.linkedin.com/", isPlaceholder: true },
-  { label: "LeetCode", href: "https://leetcode.com/", isPlaceholder: true },
+  { label: "GitHub", href: "https://github.com/ShantanuSutar" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/shantanu-sutar/" },
+  { label: "LeetCode", href: "https://leetcode.com/u/Shantanu-Sutar/" },
 ];
+
+export const resumeLink: ExternalLink = {
+  label: "View Résumé",
+  href: "/resume/Shantanu_Sutar_Resume.pdf",
+};
 
 export const experiences: readonly Experience[] = [
   {
@@ -53,11 +58,15 @@ export const projects: readonly Project[] = [
     description:
       "A full-stack food ordering platform for customers and restaurant owners, covering discovery, menus, authentication, payments, and order management.",
     technologies: ["React", "Spring Boot", "PostgreSQL", "Stripe"],
+    liveUrl: "https://dinehub-good-food-delivered.vercel.app/",
+    repositoryUrl: "https://github.com/ShantanuSutar/Food-Ordering-App",
   },
   {
     title: "Unsaid — Stories and More",
     description:
       "A full-stack publishing platform with rich-text editing, authentication, social interactions, and scheduled publishing.",
     technologies: ["React", "Node.js", "Express", "PostgreSQL"],
+    liveUrl: "https://unsaid-stories-and-more.netlify.app/",
+    repositoryUrl: "https://github.com/ShantanuSutar/Blog-App",
   },
 ];

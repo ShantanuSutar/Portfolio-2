@@ -16,7 +16,11 @@ export type NavigationItem = {
 export type SocialLink = {
   readonly label: string;
   readonly href: string;
-  readonly isPlaceholder: boolean;
+};
+
+export type ExternalLink = {
+  readonly label: string;
+  readonly href: string;
 };
 
 export type Experience = {
@@ -31,5 +35,6 @@ export type Project = {
   readonly title: string;
   readonly description: string;
   readonly technologies: readonly string[];
-  readonly href?: string;
+  readonly liveUrl: string;
+  readonly repositoryUrl: string;
 };
