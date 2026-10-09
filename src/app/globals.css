@@ -11,6 +11,8 @@
   --font-mono-fallback: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --page-gutter: clamp(1.5rem, 4vw, 4.5rem);
   --content-width: 42rem;
+  --interaction-duration: 180ms;
+  --interaction-easing: cubic-bezier(0.2, 0.65, 0.3, 1);
 }
 
 @theme inline {
@@ -42,6 +44,13 @@ body {
   font-family: var(--font-sans), var(--font-sans-fallback);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+}
+
+main,
+.content-area,
+.entry__content,
+.identity-area {
+  min-width: 0;
 }
 
 ::selection {
@@ -78,7 +87,7 @@ ol {
   font-family: var(--font-mono), var(--font-mono-fallback);
   font-size: 0.7rem;
   transform: translateY(-200%);
-  transition: transform 180ms ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing);
 }
 
 .skip-link:focus {
@@ -174,7 +183,7 @@ ol {
   font-size: 0.76rem;
   font-weight: 480;
   letter-spacing: 0.01em;
-  transition: color 180ms ease;
+  transition: color var(--interaction-duration) var(--interaction-easing);
 }
 
 .primary-nav a::before {
@@ -188,24 +197,22 @@ ol {
   background: var(--background);
   content: "";
   transform: translate(-2px, -50%);
-  transition: background-color 180ms ease, border-color 180ms ease;
+  transition:
+    background-color var(--interaction-duration) var(--interaction-easing),
+    border-color var(--interaction-duration) var(--interaction-easing);
 }
 
 .primary-nav a span {
-  transition: transform 180ms ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing);
 }
 
-.primary-nav a:hover,
-.primary-nav a[aria-current="location"] {
+.primary-nav a[aria-current="location"],
+.primary-nav a:focus-visible {
   color: var(--foreground);
 }
 
-.primary-nav a:hover span {
-  transform: translateX(2px);
-}
-
-.primary-nav a:hover::before,
-.primary-nav a[aria-current="location"]::before {
+.primary-nav a[aria-current="location"]::before,
+.primary-nav a:focus-visible::before {
   border-color: var(--accent);
   background: var(--accent);
 }
@@ -230,18 +237,24 @@ ol {
   gap: 0.25rem;
   color: var(--muted);
   font-size: 0.75rem;
-  transition: color 180ms ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3em;
+  transition:
+    color var(--interaction-duration) var(--interaction-easing),
+    text-decoration-color var(--interaction-duration) var(--interaction-easing);
 }
 
-.social-links a:hover {
+.social-links a:focus-visible {
   color: var(--accent);
+  text-decoration-color: currentColor;
 }
 
 .social-links svg {
-  transition: transform 180ms ease;
+  transition: transform var(--interaction-duration) var(--interaction-easing);
 }
 
-.social-links a:hover svg {
+.social-links a:focus-visible svg {
   transform: translate(0.1rem, -0.1rem);
 }
 
@@ -253,6 +266,7 @@ ol {
 
 .content-section {
   padding-bottom: clamp(7rem, 14vh, 11rem);
+  scroll-margin-top: 3rem;
 }
 
 .content-section h2 {
@@ -299,14 +313,17 @@ ol {
   gap: clamp(1.5rem, 4vw, 3rem);
   padding-block: 1.75rem;
   border-top: 1px solid var(--border);
-  transition: border-color 180ms ease, transform 180ms ease;
+  transition:
+    border-color var(--interaction-duration) var(--interaction-easing),
+    opacity var(--interaction-duration) var(--interaction-easing),
+    transform var(--interaction-duration) var(--interaction-easing);
 }
 
 .entry:last-child {
   border-bottom: 1px solid var(--border);
 }
 
-.entry:hover {
+.entry:focus-within {
   border-color: #4b4540;
   transform: translateX(2px);
 }
@@ -371,21 +388,73 @@ ol {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  transition: color 180ms ease;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.3em;
+  transition:
+    color var(--interaction-duration) var(--interaction-easing),
+    text-decoration-color var(--interaction-duration) var(--interaction-easing);
 }
 
-.project-list .entry__content h3 a:hover {
+.project-list .entry__content h3 a:focus-visible {
   color: var(--accent);
+  text-decoration-color: currentColor;
 }
 
 .project-list .entry__content h3 svg {
   color: var(--muted);
-  transition: color 180ms ease, transform 180ms ease;
+  transition:
+    color var(--interaction-duration) var(--interaction-easing),
+    transform var(--interaction-duration) var(--interaction-easing);
 }
 
-.project-list .entry__content h3 a:hover svg {
+.project-list .entry__content h3 a:focus-visible svg {
   color: var(--accent);
   transform: translate(1px, -1px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primary-nav a:hover {
+    color: var(--foreground);
+  }
+
+  .primary-nav a:hover span {
+    transform: translateX(2px);
+  }
+
+  .primary-nav a:hover::before {
+    border-color: var(--accent);
+    background: var(--accent);
+  }
+
+  .social-links a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+
+  .social-links a:hover svg {
+    transform: translate(0.1rem, -0.1rem);
+  }
+
+  .entry-list:hover .entry {
+    opacity: 0.86;
+  }
+
+  .entry-list .entry:hover {
+    border-color: #4b4540;
+    opacity: 1;
+    transform: translateX(2px);
+  }
+
+  .project-list .entry__content h3 a:hover {
+    color: var(--accent);
+    text-decoration-color: currentColor;
+  }
+
+  .project-list .entry__content h3 a:hover svg {
+    color: var(--accent);
+    transform: translate(1px, -1px);
+  }
 }
 
 .site-footer {
@@ -417,7 +486,7 @@ ol {
   .identity-area__inner {
     position: static;
     min-height: auto;
-    padding-block: 4.5rem 3rem;
+    padding-block: 4.5rem 2.5rem;
   }
 
   .identity h1 {
@@ -447,8 +516,13 @@ ol {
     transform: none;
   }
 
-  .primary-nav a:hover::before,
-  .primary-nav a[aria-current="location"]::before {
+  .primary-nav a,
+  .social-links a {
+    min-height: 2.75rem;
+  }
+
+  .primary-nav a[aria-current="location"]::before,
+  .primary-nav a:focus-visible::before {
     opacity: 1;
   }
 
@@ -463,11 +537,12 @@ ol {
 
   .content-area {
     max-width: none;
-    padding-top: 3rem;
+    padding-top: 2.5rem;
   }
 
   .content-section {
-    padding-bottom: 7rem;
+    padding-bottom: clamp(5.75rem, 12vw, 7rem);
+    scroll-margin-top: 2rem;
   }
 }
 
@@ -478,6 +553,26 @@ ol {
 
   .identity-area__inner {
     padding-top: 3.5rem;
+  }
+
+  .identity h1 {
+    font-size: clamp(2.35rem, 12vw, 2.85rem);
+  }
+
+  .identity-statement {
+    margin-top: 2rem;
+  }
+
+  .primary-nav {
+    margin-top: 2.5rem;
+  }
+
+  .content-area {
+    padding-top: 2rem;
+  }
+
+  .content-section {
+    padding-bottom: 5rem;
   }
 
   .entry {
@@ -493,6 +588,16 @@ ol {
   .site-footer {
     padding-block: 0 2rem;
   }
+
+  .social-nav--mobile {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 860px) and (hover: hover) and (pointer: fine) {
+  .primary-nav a:hover::before {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -507,5 +612,12 @@ ol {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .entry,
+  .primary-nav a span,
+  .project-list .entry__content h3 svg,
+  .social-links svg {
+    transform: none !important;
   }
 }

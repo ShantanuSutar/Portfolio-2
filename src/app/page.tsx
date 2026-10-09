@@ -8,7 +8,7 @@ import { personalInformation } from "@/data/portfolio";
 export default function Home() {
   return (
     <PortfolioShell>
-      <main id="main-content">
+      <main id="main-content" tabIndex={-1}>
         <AboutSection />
         <ExperienceSection />
         <ProjectsSection />
