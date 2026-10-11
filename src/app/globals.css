@@ -13,6 +13,8 @@
   --divider: #555c5b;
   --border-emphasis: #4b4540;
   --nav-node: #4b5352;
+/* --cursor-core: rgba(118, 214, 223, 0.55);
+--cursor-soft: rgba(118, 214, 223, 0.22); */
   --cursor-core: rgb(211 163 111 / 14%);
   --cursor-soft: rgb(211 163 111 / 4%);
   --font-sans-fallback: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -111,27 +113,39 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+
 body::before {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 0;
-  width: 34rem;
-  height: 34rem;
+
+  width: 50rem;
+  height: 50rem;
   border-radius: 50%;
+
   background: radial-gradient(
     circle,
     var(--cursor-core) 0%,
-    var(--cursor-soft) 44%,
-    transparent 72%
+    var(--cursor-core) 8%,
+    var(--cursor-soft) 38%,
+    transparent 80%
   );
+
   content: "";
   opacity: 0;
   pointer-events: none;
-  transform: translate3d(calc(var(--cursor-x) - 50%), calc(var(--cursor-y) - 50%), 0);
+
+  transform: translate3d(
+    calc(var(--cursor-x) - 50%),
+    calc(var(--cursor-y) - 50%),
+    0
+  );
+
   transition: opacity 240ms var(--interaction-easing);
   will-change: transform, opacity;
 }
+
 
 main,
 .content-area,
