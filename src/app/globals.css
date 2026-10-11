@@ -755,103 +755,277 @@ ol {
   gap: 0.6rem 1rem;
 }
 
-.footer-portal-link {
+.time-travel-trigger {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
   min-height: 2.25rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
   color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 0.3em;
   transition:
     color var(--interaction-duration) var(--interaction-easing),
-    text-decoration-color var(--interaction-duration) var(--interaction-easing);
+    text-decoration-color var(--interaction-duration) var(--interaction-easing),
+    transform var(--interaction-duration) var(--interaction-easing);
 }
 
-.footer-portal {
+.time-travel-trigger__symbol {
   position: relative;
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 1.6rem;
+  height: 1.6rem;
   flex: 0 0 auto;
-  opacity: 0.68;
+  opacity: 0.72;
   transition: opacity var(--interaction-duration) var(--interaction-easing);
 }
 
-.footer-portal > span {
+.time-travel-trigger__symbol > span {
   position: absolute;
-  inset: 0.2rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 74%, var(--foreground));
+  inset: 0.22rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 72%, var(--foreground));
   border-radius: 52% 48% 57% 43%;
-  background: color-mix(in srgb, var(--accent) 8%, transparent);
-  animation:
-    portal-turn 12s linear infinite,
-    portal-color 5.5s ease-in-out infinite alternate;
+  animation: time-travel-turn 14s linear infinite;
   transform-origin: 48% 52%;
 }
 
-.footer-portal > span:nth-child(2) {
-  inset: 0.28rem 0.13rem 0.13rem 0.28rem;
+.time-travel-trigger__symbol > span:nth-child(2) {
+  inset: 0.31rem 0.14rem 0.14rem 0.31rem;
   border-radius: 46% 54% 44% 56%;
-  animation-duration: 15s, 6.5s;
-  animation-direction: reverse, alternate;
+  animation-duration: 18s;
+  animation-direction: reverse;
 }
 
-.footer-portal > span:nth-child(3) {
-  inset: 0.12rem 0.3rem 0.3rem 0.12rem;
+.time-travel-trigger__symbol > span:nth-child(3) {
+  inset: 0.15rem 0.34rem 0.34rem 0.15rem;
+  border-color: color-mix(in srgb, var(--accent) 42%, var(--muted));
   border-radius: 58% 42% 49% 51%;
-  animation-duration: 10s, 4.8s;
+  animation-duration: 11s;
 }
 
-.footer-portal > span:nth-child(4) {
-  inset: 0.34rem 0.2rem 0.2rem 0.34rem;
-  border-radius: 43% 57% 55% 45%;
-  animation-duration: 17s, 7s;
-  animation-direction: reverse, alternate-reverse;
+.time-travel-trigger__symbol > i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.22rem;
+  height: 0.22rem;
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+  transform: translate(-50%, -50%);
 }
 
-.footer-portal > span:nth-child(5) {
-  inset: 0.42rem;
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 30%, transparent);
-  animation-duration: 8s, 4s;
-}
-
-.footer-portal-link__arrow {
-  color: var(--accent);
-  transition: transform var(--interaction-duration) var(--interaction-easing);
-}
-
-.footer-portal-link:focus-visible {
+.time-travel-trigger:focus-visible {
   color: var(--foreground);
   text-decoration-color: currentColor;
 }
 
-.footer-portal-link:focus-visible .footer-portal {
+.time-travel-trigger:focus-visible .time-travel-trigger__symbol {
   opacity: 1;
 }
 
-.footer-portal-link:focus-visible .footer-portal > span {
-  animation-duration: 3.6s, 1.8s;
+.time-travel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  overflow-y: auto;
+  place-items: center;
+  padding: max(1.25rem, env(safe-area-inset-top))
+    max(1.25rem, env(safe-area-inset-right))
+    max(1.25rem, env(safe-area-inset-bottom))
+    max(1.25rem, env(safe-area-inset-left));
+  background: color-mix(in srgb, var(--background) 97%, transparent);
+  overscroll-behavior: contain;
+  animation: time-travel-overlay-in 180ms var(--interaction-easing) both;
 }
 
-.footer-portal-link:focus-visible .footer-portal-link__arrow {
-  transform: translate(1px, -1px);
+.time-travel-dialog {
+  position: relative;
+  width: min(48rem, 100%);
+  max-height: 100%;
+  padding: 2.75rem clamp(0rem, 2vw, 1.25rem) 1rem;
+  color: var(--foreground);
+  outline: none;
+  text-align: center;
+  animation: time-travel-dialog-in 220ms var(--interaction-easing) both;
 }
 
-@keyframes portal-turn {
+.time-travel-dialog__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--background);
+  color: var(--muted);
+  cursor: pointer;
+  place-items: center;
+  transition:
+    border-color var(--interaction-duration) var(--interaction-easing),
+    color var(--interaction-duration) var(--interaction-easing),
+    transform var(--interaction-duration) var(--interaction-easing);
+}
+
+.time-travel-dialog__heading {
+  position: relative;
+  z-index: 2;
+}
+
+.time-travel-dialog__heading > span {
+  color: var(--accent);
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.time-travel-dialog__heading h2 {
+  margin: 0.55rem 0 0;
+  font-size: clamp(1.25rem, 3vw, 1.65rem);
+  font-weight: 520;
+  letter-spacing: -0.025em;
+}
+
+.time-travel-stage {
+  position: relative;
+  width: min(100%, 42rem);
+  aspect-ratio: 16 / 10;
+  margin: 1.1rem auto 0.8rem;
+  isolation: isolate;
+}
+
+.time-travel-portal,
+.time-travel-portal > span,
+.time-travel-window {
+  position: absolute;
+}
+
+.time-travel-portal {
+  inset: 0;
+  z-index: 0;
+}
+
+.time-travel-portal > span {
+  inset: 5% 4%;
+  border: 1px solid color-mix(in srgb, var(--accent) 70%, var(--foreground));
+  border-radius: 49% 51% 46% 54% / 53% 44% 56% 47%;
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+  opacity: 0.72;
+  animation:
+    time-travel-turn 10s linear infinite,
+    time-travel-color 3.8s ease-in-out infinite alternate;
+  transform-origin: 49% 51%;
+}
+
+.time-travel-portal > span:nth-child(2) {
+  inset: 7% 2% 3% 7%;
+  border-radius: 54% 46% 52% 48% / 46% 55% 45% 54%;
+  animation-duration: 14s, 5s;
+  animation-direction: reverse, alternate-reverse;
+}
+
+.time-travel-portal > span:nth-child(3) {
+  inset: 2% 8% 8% 1%;
+  border-color: color-mix(in srgb, var(--accent) 48%, var(--muted));
+  border-radius: 45% 55% 48% 52% / 57% 43% 54% 46%;
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  animation-duration: 17s, 4.4s;
+}
+
+.time-travel-portal > span:nth-child(4) {
+  inset: 9% 6% 1% 4%;
+  border-radius: 51% 49% 57% 43% / 45% 52% 48% 55%;
+  animation-duration: 12s, 5.6s;
+  animation-direction: reverse, alternate;
+}
+
+.time-travel-portal > span:nth-child(5) {
+  inset: 10% 8%;
+  border-color: color-mix(in srgb, var(--accent) 78%, var(--foreground));
+  background: color-mix(in srgb, var(--accent) 11%, transparent);
+  opacity: 0.9;
+  animation-duration: 8s, 3.2s;
+}
+
+.time-travel-window {
+  inset: 13% 11%;
+  z-index: 1;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--accent) 68%, var(--border));
+  border-radius: 47% 53% 48% 52% / 10% 12% 9% 11%;
+  background: var(--surface);
+  box-shadow: 0 1.5rem 4rem color-mix(in srgb, var(--background) 72%, transparent);
+}
+
+.time-travel-window img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.time-travel-dialog__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  color: var(--muted);
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--muted) 42%, transparent);
+  text-underline-offset: 0.35em;
+  transition:
+    color var(--interaction-duration) var(--interaction-easing),
+    text-decoration-color var(--interaction-duration) var(--interaction-easing);
+}
+
+.time-travel-dialog__link svg {
+  color: var(--accent);
+  transition: transform var(--interaction-duration) var(--interaction-easing);
+}
+
+@keyframes time-travel-turn {
   to {
     transform: rotate(1turn);
   }
 }
 
-@keyframes portal-color {
+@keyframes time-travel-color {
   from {
-    border-color: color-mix(in srgb, var(--accent) 76%, var(--foreground));
+    border-color: color-mix(in srgb, var(--accent) 78%, var(--foreground));
+    opacity: 0.58;
   }
 
   to {
-    border-color: color-mix(in srgb, var(--accent) 42%, var(--muted));
+    border-color: color-mix(in srgb, var(--accent) 44%, var(--muted));
+    opacity: 0.9;
+  }
+}
+
+@keyframes time-travel-overlay-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes time-travel-dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
   }
 }
 
@@ -862,20 +1036,32 @@ ol {
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .footer-portal-link:hover {
+  .time-travel-trigger:hover {
+    color: var(--foreground);
+    text-decoration-color: currentColor;
+    transform: translateY(-1px);
+  }
+
+  .time-travel-trigger:hover .time-travel-trigger__symbol {
+    opacity: 1;
+  }
+
+  .time-travel-trigger:hover .time-travel-trigger__symbol > span {
+    animation-duration: 4.5s;
+  }
+
+  .time-travel-dialog__close:hover {
+    border-color: var(--border-emphasis);
+    color: var(--foreground);
+    transform: translateY(-1px);
+  }
+
+  .time-travel-dialog__link:hover {
     color: var(--foreground);
     text-decoration-color: currentColor;
   }
 
-  .footer-portal-link:hover .footer-portal {
-    opacity: 1;
-  }
-
-  .footer-portal-link:hover .footer-portal > span {
-    animation-duration: 3.6s, 1.8s;
-  }
-
-  .footer-portal-link:hover .footer-portal-link__arrow {
+  .time-travel-dialog__link:hover svg {
     transform: translate(1px, -1px);
   }
 }
@@ -948,7 +1134,7 @@ ol {
     margin-bottom: 2rem;
   }
 
-  .footer-portal-link {
+  .time-travel-trigger {
     min-height: 2.75rem;
   }
 
@@ -1012,6 +1198,24 @@ ol {
     gap: 0.35rem;
   }
 
+  .time-travel-overlay {
+    align-items: center;
+    padding-inline: 0.9rem;
+  }
+
+  .time-travel-dialog {
+    padding-top: 3.4rem;
+  }
+
+  .time-travel-dialog__heading > span {
+    font-size: 0.6rem;
+  }
+
+  .time-travel-stage {
+    width: min(112%, 31rem);
+    margin-inline: -6%;
+  }
+
   .social-nav--mobile {
     margin-bottom: 1.5rem;
   }
@@ -1047,11 +1251,15 @@ ol {
   .project-repository-link svg,
   .resume-link svg,
   .social-links svg,
-  .footer-portal-link__arrow {
+  .time-travel-trigger,
+  .time-travel-dialog,
+  .time-travel-dialog__close,
+  .time-travel-dialog__link svg {
     transform: none !important;
   }
 
-  .footer-portal > span {
+  .time-travel-trigger__symbol > span,
+  .time-travel-portal > span {
     animation: none;
   }
 }
