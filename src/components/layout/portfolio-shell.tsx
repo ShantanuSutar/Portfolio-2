@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { SocialLinks } from "@/components/navigation/social-links";
+import { InteractiveBackground } from "@/components/ui/interactive-background";
 import { personalInformation } from "@/data/portfolio";
 
 type PortfolioShellProps = {
@@ -11,6 +12,7 @@ type PortfolioShellProps = {
 export function PortfolioShell({ children }: PortfolioShellProps) {
   return (
     <div className="portfolio-frame" id="top">
+      <InteractiveBackground />
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>

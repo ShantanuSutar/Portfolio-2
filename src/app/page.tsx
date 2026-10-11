@@ -3,6 +3,7 @@ import { SocialLinks } from "@/components/navigation/social-links";
 import { AboutSection } from "@/components/sections/about-section";
 import { ExperienceSection } from "@/components/sections/experience-section";
 import { ProjectsSection } from "@/components/sections/projects-section";
+import { FooterEasterEgg } from "@/components/ui/footer-easter-egg";
 import { personalInformation, socialLinks } from "@/data/portfolio";
 import { canonicalUrl, hasConfiguredSiteUrl } from "@/lib/site-url";
 
@@ -36,7 +37,10 @@ export default function Home() {
       </main>
       <footer className="site-footer">
         <SocialLinks variant="mobile" />
-        <p>Designed and built by {personalInformation.name}.</p>
+        <div className="site-footer__line">
+          <p>Designed and built by {personalInformation.name}.</p>
+          <FooterEasterEgg />
+        </div>
       </footer>
     </PortfolioShell>
   );
