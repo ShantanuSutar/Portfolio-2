@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { SiteNavigation } from "@/components/navigation/site-navigation";
 import { SocialLinks } from "@/components/navigation/social-links";
 import { InteractiveBackground } from "@/components/ui/interactive-background";
+import { ThemeSwitcher } from "@/components/ui/theme-switcher";
 import { personalInformation } from "@/data/portfolio";
 
 type PortfolioShellProps = {
@@ -36,6 +37,7 @@ export function PortfolioShell({ children }: PortfolioShellProps) {
           </header>
 
           <SiteNavigation />
+          <ThemeSwitcher />
           <SocialLinks variant="desktop" />
         </div>
       </aside>

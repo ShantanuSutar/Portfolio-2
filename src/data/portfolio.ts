@@ -33,6 +33,11 @@ export const resumeLink: ExternalLink = {
   href: "/resume/Shantanu_Sutar_Resume.pdf",
 };
 
+export const previousPortfolioLink: ExternalLink = {
+  label: "Travel to my previous portfolio",
+  href: "https://shantanu-frontend-dev-portfolio.netlify.app/",
+};
+
 export const experiences: readonly Experience[] = [
   {
     company: "Capgemini",

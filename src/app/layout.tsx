@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 
 import { canonicalUrl, siteUrl } from "@/lib/site-url";
+import { themeInitializationScript } from "@/lib/themes";
 
 import "./globals.css";
 
@@ -56,8 +58,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "dark",
-  themeColor: "#101416",
+  colorScheme: "dark light",
+  themeColor: "#111517",
 };
 
 export default function RootLayout({
@@ -66,8 +68,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={`${sans.variable} ${mono.variable}`}
+      data-theme="original"
+      suppressHydrationWarning
+    >
+      <body>
+        {children}
+        <Script
+          id="theme-initialization"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: themeInitializationScript }}
+        />
+      </body>
     </html>
   );
 }

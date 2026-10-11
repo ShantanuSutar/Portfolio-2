@@ -1,13 +1,25 @@
+import { previousPortfolioLink } from "@/data/portfolio";
+
 export function FooterEasterEgg() {
   return (
-    <details className="footer-easter-egg">
-      <summary>
-        <span aria-hidden="true">&gt;_</span>
-        <span className="sr-only">Toggle a small footer message</span>
-      </summary>
-      <span className="footer-easter-egg__message">
-        connection established — curiosity rewarded.
+    <a
+      className="footer-portal-link"
+      href={previousPortfolioLink.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${previousPortfolioLink.label} (opens in a new tab)`}
+    >
+      <span className="footer-portal" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
       </span>
-    </details>
+      <span>{previousPortfolioLink.label}</span>
+      <span className="footer-portal-link__arrow" aria-hidden="true">
+        ↗
+      </span>
+    </a>
   );
 }
