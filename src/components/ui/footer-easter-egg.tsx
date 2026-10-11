@@ -170,13 +170,76 @@ export function FooterEasterEgg() {
         aria-controls={dialogId}
         onClick={() => setIsOpen(true)}
       >
-        <span className="time-travel-trigger__symbol" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <i />
-        </span>
-        <span>Click to time travel</span>
+        <svg
+          className="time-travel-trigger__object"
+          width="96"
+          height="120"
+          viewBox="0 0 96 120"
+          aria-hidden="true"
+          focusable="false"
+          fill="none"
+        >
+          <g strokeLinejoin="round" strokeLinecap="round">
+            <path
+              d="M13 25v72m70-72v72"
+              stroke="var(--accent)"
+              strokeWidth="5"
+              opacity="0.42"
+            />
+            <path
+              d="M28 28c-1 16 4 23 15 32 3 2 3 6 0 8-11 9-16 16-15 32h40c1-16-4-23-15-32-3-2-3-6 0-8 11-9 16-16 15-32Z"
+              fill="var(--surface)"
+              stroke="var(--accent)"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M32 42c3 8 8 13 15 18h2c7-5 12-10 15-18-9 3-23 3-32 0Z"
+              fill="var(--accent)"
+              opacity="0.8"
+            />
+            <path
+              d="M31 98c3-3 8-5 12-10 2-2 3-5 5-6 2 1 3 4 5 6 4 5 9 7 12 10Z"
+              fill="var(--accent)"
+              opacity="0.8"
+            />
+            <path
+              className="time-travel-trigger__sand"
+              d="M48 64v17"
+              stroke="var(--accent)"
+              strokeWidth="1.5"
+              strokeDasharray="1 3"
+            />
+            <path
+              d="M33 33c0 10 2 16 8 22m-8 37c0-8 3-14 8-19"
+              stroke="var(--foreground)"
+              strokeWidth="2"
+              opacity="0.38"
+            />
+            <path
+              d="M20 27v73m56-73v73"
+              stroke="var(--accent)"
+              strokeWidth="4"
+            />
+            <path
+              d="M19 29v69m56-69v69"
+              stroke="var(--foreground)"
+              opacity="0.32"
+            />
+            <path
+              d="M9 22v7c0 6 17 10 39 10s39-4 39-10v-7M9 101v7c0 6 17 10 39 10s39-4 39-10v-7"
+              fill="var(--accent)"
+              stroke="var(--accent)"
+              opacity="0.72"
+            />
+            <ellipse cx="48" cy="101" rx="39" ry="9" fill="var(--surface)" stroke="var(--accent)" strokeWidth="2" />
+            <ellipse cx="48" cy="22" rx="39" ry="9" fill="var(--accent)" />
+            <ellipse cx="48" cy="21" rx="31" ry="6" fill="var(--surface)" />
+            <path d="M15 28c14 7 52 7 66 0m-66 81c14 7 52 7 66 0" stroke="var(--foreground)" opacity="0.3" />
+            <path d="M54 22a7 3 0 1 0-7 3m0 0-3-2m3 2-4 1" stroke="var(--accent)" strokeWidth="1.4" />
+            <circle cx="48" cy="109" r="2" fill="var(--accent)" />
+          </g>
+        </svg>
+        <span className="sr-only">Click to time travel</span>
       </button>
       {dialog}
     </>

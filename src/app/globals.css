@@ -756,77 +756,54 @@ ol {
 }
 
 .time-travel-trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  min-height: 2.25rem;
+  display: block;
+  flex: 0 0 auto;
+  align-self: flex-end;
+  width: 6rem;
+  height: 7.5rem;
+  margin-left: auto;
   padding: 0;
   border: 0;
+  border-radius: 0.25rem;
   background: transparent;
-  color: var(--muted);
   cursor: pointer;
-  font: inherit;
-  letter-spacing: inherit;
-  text-decoration: underline;
-  text-decoration-color: transparent;
-  text-underline-offset: 0.3em;
-  transition:
-    color var(--interaction-duration) var(--interaction-easing),
-    text-decoration-color var(--interaction-duration) var(--interaction-easing),
-    transform var(--interaction-duration) var(--interaction-easing);
+  perspective: 30rem;
+  touch-action: manipulation;
+  transition: transform 240ms var(--interaction-easing);
 }
 
-.time-travel-trigger__symbol {
-  position: relative;
-  width: 1.6rem;
-  height: 1.6rem;
-  flex: 0 0 auto;
-  opacity: 0.72;
-  transition: opacity var(--interaction-duration) var(--interaction-easing);
+.time-travel-trigger__object {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  transform: rotateZ(-7deg);
+  transform-origin: center;
+  animation: time-travel-object-spin 12s linear infinite;
 }
 
-.time-travel-trigger__symbol > span {
-  position: absolute;
-  inset: 0.22rem;
-  border: 1px solid color-mix(in srgb, var(--accent) 72%, var(--foreground));
-  border-radius: 52% 48% 57% 43%;
-  animation: time-travel-turn 14s linear infinite;
-  transform-origin: 48% 52%;
-}
-
-.time-travel-trigger__symbol > span:nth-child(2) {
-  inset: 0.31rem 0.14rem 0.14rem 0.31rem;
-  border-radius: 46% 54% 44% 56%;
-  animation-duration: 18s;
-  animation-direction: reverse;
-}
-
-.time-travel-trigger__symbol > span:nth-child(3) {
-  inset: 0.15rem 0.34rem 0.34rem 0.15rem;
-  border-color: color-mix(in srgb, var(--accent) 42%, var(--muted));
-  border-radius: 58% 42% 49% 51%;
-  animation-duration: 11s;
-}
-
-.time-travel-trigger__symbol > i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0.22rem;
-  height: 0.22rem;
-  border-radius: 50%;
-  background: var(--accent);
-  content: "";
-  transform: translate(-50%, -50%);
+.time-travel-trigger__sand {
+  animation: time-travel-sand-fall 700ms linear infinite;
 }
 
 .time-travel-trigger:focus-visible {
-  color: var(--foreground);
-  text-decoration-color: currentColor;
+  transform: translateY(-7px);
 }
 
-.time-travel-trigger:focus-visible .time-travel-trigger__symbol {
-  opacity: 1;
+@keyframes time-travel-object-spin {
+  from {
+    transform: rotateY(0turn) rotateZ(-7deg);
+  }
+
+  to {
+    transform: rotateY(1turn) rotateZ(-7deg);
+  }
+}
+
+@keyframes time-travel-sand-fall {
+  to {
+    stroke-dashoffset: -4;
+  }
 }
 
 .time-travel-overlay {
@@ -914,6 +891,7 @@ ol {
 .time-travel-portal {
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
 .time-travel-portal > span {
@@ -976,6 +954,8 @@ ol {
 }
 
 .time-travel-dialog__link {
+  position: relative;
+  z-index: 2;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1037,17 +1017,7 @@ ol {
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
   .time-travel-trigger:hover {
-    color: var(--foreground);
-    text-decoration-color: currentColor;
-    transform: translateY(-1px);
-  }
-
-  .time-travel-trigger:hover .time-travel-trigger__symbol {
-    opacity: 1;
-  }
-
-  .time-travel-trigger:hover .time-travel-trigger__symbol > span {
-    animation-duration: 4.5s;
+    transform: translateY(-7px);
   }
 
   .time-travel-dialog__close:hover {
@@ -1135,7 +1105,8 @@ ol {
   }
 
   .time-travel-trigger {
-    min-height: 2.75rem;
+    width: 4.75rem;
+    height: 5.9375rem;
   }
 
   .content-area {
@@ -1258,7 +1229,8 @@ ol {
     transform: none !important;
   }
 
-  .time-travel-trigger__symbol > span,
+  .time-travel-trigger__object,
+  .time-travel-trigger__sand,
   .time-travel-portal > span {
     animation: none;
   }
