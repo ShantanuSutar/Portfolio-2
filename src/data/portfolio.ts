@@ -46,6 +46,16 @@ export const experiences: readonly Experience[] = [
     description:
       "Building customer-facing applications across React and Java/Spring Boot, with a focus on reusable interfaces, backend services, and frontend performance.",
     technologies: ["React", "Java", "Spring Boot", "SQL"],
+    details: {
+      location: "Pune",
+      highlights: [
+        "Contributed to the development of a customer dashboard serving 10,000+ users, building responsive features using React and integrating them with Java/Spring Boot backend services.",
+        "Built and maintained 25+ reusable React components, implementing modular UI patterns to improve code reusability, consistency, and maintainability across the application.",
+        "Optimized frontend performance using code splitting, lazy loading, and memoization, increasing Lighthouse Performance scores from 68 to 95.",
+        "Developed 10+ REST APIs using Java, Spring Boot, and Spring MVC, implementing request validation, exception handling, authentication, and unit tests using JUnit.",
+        "Worked with Spring Data JPA, SQL, and microservices-based services, using Maven for dependency/build management and Git for version control and team collaboration.",
+      ],
+    },
   },
   {
     company: "Whatbytes",
@@ -54,6 +64,16 @@ export const experiences: readonly Experience[] = [
     description:
       "Worked across hotel booking and admin products, building frontend experiences and supporting backend functionality.",
     technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL"],
+    details: {
+      location: "Bengaluru",
+      highlights: [
+        "Developed customer-facing hotel booking and admin platforms using Next.js, React, TypeScript, Tailwind CSS, and Redux Toolkit, building 30+ reusable components and maintaining 20+ application pages.",
+        "Designed and developed 10+ REST APIs using Node.js, Express.js, PostgreSQL, and Prisma ORM, managing 5+ database models and optimizing 20+ database queries.",
+        "Implemented secure authentication and authorization using JWT, NextAuth.js, and Clerk, along with 2+ payment workflows including 2C2P and bank transfers.",
+        "Optimized frontend performance through code splitting, lazy loading, and asset optimization, and integrated interactive location-based hotel maps.",
+        "Deployed frontend and backend applications on Vercel and Render, ensuring reliable end-to-end application delivery while implementing request validation and centralized error handling.",
+      ],
+    },
   },
 ];
 

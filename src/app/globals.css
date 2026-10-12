@@ -612,6 +612,173 @@ ol {
   content: "/";
 }
 
+.experience-entry-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--foreground);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+
+.experience-entry-trigger > span:first-child > span {
+  color: var(--muted);
+  font-weight: 450;
+}
+
+.experience-entry-trigger > .experience-entry-title {
+  color: var(--foreground);
+  font-weight: inherit;
+}
+
+.entry-action-hint {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--muted);
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.56rem;
+  font-weight: 450;
+  letter-spacing: 0.035em;
+  opacity: 0.72;
+  transform: translateX(-2px);
+  transition:
+    color var(--interaction-duration) var(--interaction-easing),
+    opacity var(--interaction-duration) var(--interaction-easing),
+    transform var(--interaction-duration) var(--interaction-easing);
+}
+
+.experience-entry-trigger:focus-visible .entry-action-hint {
+  color: var(--accent);
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.experience-details-dialog {
+  width: min(48rem, calc(100% - 2rem));
+  max-width: none;
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), var(--font-sans-fallback);
+  overscroll-behavior: contain;
+}
+
+.experience-details-dialog::backdrop {
+  background: color-mix(in srgb, var(--background) 88%, transparent);
+}
+
+.experience-details-dialog__header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem clamp(1.1rem, 4vw, 2rem);
+  border-bottom: 1px solid var(--border);
+  background: var(--background);
+}
+
+.experience-details-dialog__header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+  line-height: 1.5;
+}
+
+.experience-details-dialog__header h2::before,
+.experience-details-dialog__header h2::after {
+  display: none;
+}
+
+.experience-details-dialog__close {
+  display: inline-grid;
+  width: 2.75rem;
+  height: 2.75rem;
+  flex: 0 0 auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0.15rem;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  place-items: center;
+  transition: color var(--interaction-duration) var(--interaction-easing);
+}
+
+.experience-details-dialog__close:focus-visible {
+  color: var(--foreground);
+}
+
+.experience-details-dialog__content {
+  padding: clamp(1.25rem, 4vw, 2rem);
+}
+
+.experience-details__job + .experience-details__job {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.experience-details__job h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 560;
+  letter-spacing: -0.015em;
+  line-height: 1.5;
+}
+
+.experience-details__job h3 span {
+  color: var(--muted);
+  font-weight: 450;
+}
+
+.experience-details__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  margin: 0.6rem 0 1.25rem;
+  color: var(--muted);
+  font-family: var(--font-mono), var(--font-mono-fallback);
+  font-size: 0.65rem;
+  line-height: 1.7;
+}
+
+.experience-details__highlights {
+  display: grid;
+  gap: 0.85rem;
+  padding-left: 1.1rem;
+  color: var(--copy);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  list-style: disc;
+}
+
+.experience-details__highlights li::marker {
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .experience-details-dialog__close:hover {
+    color: var(--foreground);
+  }
+}
+
 .project-list .entry__content {
   grid-column: 1 / -1;
   max-width: 34rem;
@@ -739,6 +906,12 @@ ol {
     transform: translateX(2px);
   }
 
+  .experience-list .entry:hover .entry-action-hint {
+    color: var(--accent);
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   .project-list .entry__content h3 a:hover {
     color: var(--accent);
     text-decoration-color: currentColor;
@@ -748,6 +921,7 @@ ol {
     color: var(--accent);
     transform: translate(1px, -1px);
   }
+
 }
 
 .site-footer {

@@ -29,6 +29,10 @@ export type Experience = {
   readonly company: string;
   readonly description: string;
   readonly technologies: readonly string[];
+  readonly details: {
+    readonly location: string;
+    readonly highlights: readonly string[];
+  };
 };
 
 export type Project = {
